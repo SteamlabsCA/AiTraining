@@ -18,6 +18,9 @@ function submitUrl() {
 		$('#webcam-container').hide();
 		$('#canvas').hide();
 		$('#label-container').hide();
+		$('#startButton').removeClass('disabled');
+		$('#startButton').text('Start!');
+		$('#startButton').removeClass('loading');
 		$('#startButton').show();
 	} else {
 		alert('invalid URL');

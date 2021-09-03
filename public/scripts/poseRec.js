@@ -17,7 +17,7 @@ async function initPose() {
 	for (let i = 0; i < maxPredictions; ++i) poseArr[i] = 0;
 
 	// Convenience function to setup a webcam
-	const size = 200;
+	const size = 500;
 	const flip = true; // whether to flip the webcam
 	webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
 	await webcam.setup(); // request access to the webcam

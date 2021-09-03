@@ -116,6 +116,8 @@ async function writeToSerial(value) {
 	// const data = new Uint8Array([116, 114, 117, 101, 10]); // "true\n"
 	// await writer.write(data);
 	// writer.releaseLock();
+
+	$('#startButton').removeClass('disabled');
 	$('#startButton').removeClass('loading');
 	$('#startButton').text('Start!');
 
