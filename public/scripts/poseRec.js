@@ -8,10 +8,6 @@ let poseArr = [];
 let poseSensitivity = 50;
 
 async function initPose() {
-	$('#webcam-container').hide();
-	$('#canvas').show();
-	$('#label-container').show();
-
 	maxPredictions = model.getTotalClasses();
 	poseArr = new Array(maxPredictions);
 	for (let i = 0; i < maxPredictions; ++i) poseArr[i] = 0;
@@ -21,20 +17,24 @@ async function initPose() {
 	const flip = true; // whether to flip the webcam
 	webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
 	await webcam.setup(); // request access to the webcam
-	$('#startButton').hide();
+	$('#startButton').fadeOut();
 	await webcam.play();
 	window.requestAnimationFrame(poseLoop);
 
 	// append/get elements to the DOM
 	const canvas = document.getElementById('canvas');
-	canvas.width = size;
 	canvas.height = size;
+	canvas.width = size;
 	ctx = canvas.getContext('2d');
 	labelContainer = document.getElementById('label-container');
 	for (let i = 0; i < maxPredictions; i++) {
 		// and class labels
 		labelContainer.appendChild(document.createElement('div'));
 	}
+	$('#webcam-container').hide(() => {
+		$('#canvas').fadeIn();
+		$('#label-container').fadeIn();
+	});
 }
 
 async function poseLoop(timestamp) {

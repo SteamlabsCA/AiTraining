@@ -11,27 +11,59 @@ $(document).ready(function () {
 // socket.on('connect', () => {});
 // let URL = 'https://teachablemachine.withgoogle.com/models/TmHiXRkQy/';
 
-let model, webcam, labelContainer, maxPredictions, ctx, found;
+let model, webcam, labelContainer, maxPredictions, ctx, found, modelName;
+let pageNumber = 1;
 
-function submitUrl() {
+function pickModel(model) {
+	modelName = model;
+	changePage(true);
+}
+
+function changePage(direction) {
+	if (direction) {
+		if (pageNumber === 1) {
+			setTimeout(function () {
+				$(`#page-${pageNumber}`).fadeOut('fast', function () {
+					$('.nav').removeClass('init-hide-imp');
+					$('.projectName').text(modelName);
+					pageNumber++;
+					$(`#page-${pageNumber}`).fadeIn('slow');
+				});
+			}, 100);
+		} else {
+			setTimeout(function () {
+				$(`#page-${pageNumber}`).fadeOut('fast', function () {
+					pageNumber++;
+					$(`#page-${pageNumber}`).fadeIn('slow');
+				});
+			}, 100);
+		}
+	}
+}
+
+$('#submitUrl').click(() => {
 	if (validURL(teachableUrl.value)) {
-		$('#webcam-container').hide();
-		$('#canvas').hide();
-		$('#label-container').hide();
-		$('#startButton').removeClass('disabled');
-		$('#startButton').text('Start!');
-		$('#startButton').removeClass('loading');
-		$('#startButton').show();
+		$('.nav').addClass('init-hide-imp');
+		$('#webcam-container').fadeOut(() => {
+			$('#canvas').fadeOut();
+			$('#label-container').fadeOut();
+			$('#startButton').removeClass('disabled');
+			$('#startButton').text('Start!');
+			$('#startButton').removeClass('loading');
+			$('#startButton').fadeIn();
+			changePage(true);
+		});
 	} else {
 		alert('invalid URL');
 	}
-}
+});
 
 startButton.onclick = () => {
 	if (validURL(teachableUrl.value)) {
 		$('#startButton').addClass('disabled');
 		$('#startButton').text('Loading');
 		$('#startButton').addClass('loading');
+		$('#results').removeClass('init-hide-imp');
 		found = false;
 		openPort();
 		chooseModel(teachableUrl.value);
