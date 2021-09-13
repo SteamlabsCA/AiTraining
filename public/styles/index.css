@@ -304,6 +304,7 @@ button:active {
 
 #page-4 #audio-container {
   display: none;
+  text-align: center;
 }
 
 #page-4 .page-container {

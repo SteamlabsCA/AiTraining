@@ -7,7 +7,7 @@ let readableStreamClosed;
 let writer;
 let writableStreamClosed;
 
-console.log(`("serial" in navigator): ${'serial' in navigator}`);
+// console.log(`("serial" in navigator): ${'serial' in navigator}`);
 
 navigator.serial.getPorts().then(async (ports) => {
 	if (ports.length == 0) {
@@ -15,7 +15,7 @@ navigator.serial.getPorts().then(async (ports) => {
 		return;
 	}
 	port = ports[0];
-	console.log(port);
+	// console.log(port);
 });
 
 requestPortButton.onclick = async (event) => {
