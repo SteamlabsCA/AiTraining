@@ -15,12 +15,20 @@ async function initImg() {
 	// Convenience function to setup a webcam
 	const flip = true; // whether to flip the webcam
 	webcam = new tmImage.Webcam(500, 500, flip); // width, height, flip
-	await webcam.setup(); // request access to the webcam
+
+	let selectedCam = $('#cam').find(':selected').text();
+	if (selectedCam === 'back') {
+		await webcam.setup({ facingMode: 'environment' }); // request access to the webcam
+	} else {
+		await webcam.setup(); // request access to the webcam
+	}
+
 	$('#canvas').hide(() => {
 		$('.projectName').removeClass('loading');
 		$('.projectName').text('IMAGE MODEL');
 		$('#webcam-container').show();
 		$('#label-container').fadeIn();
+		$('#message-log').fadeIn();
 	});
 	await webcam.play();
 	window.requestAnimationFrame(imgLoop);
@@ -45,6 +53,7 @@ async function initImg() {
 }
 
 async function imgLoop() {
+	if (!open) addLog('Microbit Connection Closed', 2);
 	if (continous) {
 		if (!continous && heldClasses.length > 0) continous = false;
 

@@ -6,6 +6,7 @@ let reader;
 let readableStreamClosed;
 let writer;
 let writableStreamClosed;
+let videoInputs = 0;
 
 // console.log(`("serial" in navigator): ${'serial' in navigator}`);
 
@@ -26,6 +27,25 @@ requestPortButton.onclick = async (event) => {
 		});
 		console.log(port);
 		changePage(true);
+
+		if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+			console.log('enumerateDevices() not supported.');
+			return;
+		}
+		// List cameras and microphones.
+		navigator.mediaDevices
+			.enumerateDevices()
+			.then(function (devices) {
+				devices.forEach(function (device) {
+					if (device.kind === 'videoinput') videoInputs++;
+				});
+				if (videoInputs > 1) {
+					$('#cam-select').show();
+				}
+			})
+			.catch(function (err) {
+				console.log(err.name + ': ' + err.message);
+			});
 	} catch (error) {
 		console.log(error);
 	} finally {

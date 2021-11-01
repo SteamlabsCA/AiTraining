@@ -39,6 +39,7 @@ async function initAudio(modelURL, metadataURL) {
 		$('.projectName').text('AUDIO MODEL');
 		$('#audio-container').fadeIn();
 		$('#canvas').hide();
+		$('#message-log').fadeIn();
 	});
 	$('#label-container').fadeIn();
 
@@ -48,6 +49,7 @@ async function initAudio(modelURL, metadataURL) {
 
 	recognizer.listen(
 		(result) => {
+			if (!open) addLog('Microbit Connection Closed', 2);
 			if (continous) {
 				if (!continous && heldClasses.length > 0) continous = false;
 				// render the probability scores per class
