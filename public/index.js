@@ -72,6 +72,7 @@ async function chooseModel(URL) {
 
 // Serial Submit to  Microbit
 function serialSubmit(classPrediction) {
+	addLog(`AI predicted ${classPrediction}`, 1);
 	writeToSerial(classPrediction);
 }
 
@@ -94,8 +95,6 @@ $('#label-container').on('click', '.toggle-switch', function (event) {
 	for (let i = 0; i < heldClasses.length; i++) {
 		if (heldClasses[i] === id) {
 			heldClasses.splice(i, 1);
-			//test
-			console.log(`${id}: removed`);
 			continous = true;
 			return;
 		}
@@ -110,6 +109,10 @@ $('#help-button').click(() => {
 	$('.help-content').slideToggle();
 });
 
+$('#message-log').click(() => {
+	$('.log-content').slideToggle();
+});
+
 function alertUser(msg) {
 	$('#alert-text').text(msg);
 	$('#alert-div').fadeIn(() => {
@@ -117,4 +120,13 @@ function alertUser(msg) {
 			$('#alert-div').fadeOut();
 		});
 	});
+}
+
+//Log Microbit Site actions
+function addLog(event) {
+	if ($('#log p').attr('id') === 'firstLog') {
+		$('#log').html(`<p class="log-paragraph"><strong>${new Date().toLocaleTimeString()}</strong>   ${event}</p><hr>`);
+	} else {
+		$('#log').append(`<p class="log-paragraph"><strong>${new Date().toLocaleTimeString()}</strong>   ${event}</p><hr>`);
+	}
 }
