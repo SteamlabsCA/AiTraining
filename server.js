@@ -26,9 +26,10 @@ app.post('/git', (req, res) => {
 	if (req.headers['x-github-event'] === 'push' && crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(req.headers['x-hub-signature']))) {
 		res.sendStatus(200);
 		const commands = [
-			'git reset --hard',
-			'git pull https://github.com/SteamlabsCA/AiTraining.git main --force',
-			// 'npm install',
+			'git fetch origin main',
+			'git reset --hard origin/main',
+			'git pull origin main --force',
+			'npm install',
 			// your build commands here
 			'refresh',
 		]; // fixes glitch ui
