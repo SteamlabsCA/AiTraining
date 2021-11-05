@@ -26,8 +26,7 @@ app.post('/git', (req, res) => {
 	if (req.headers['x-github-event'] === 'push' && crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(req.headers['x-hub-signature']))) {
 		res.sendStatus(200);
 		const commands = [
-			'git fetch https://github.com/SteamlabsCA/AiTraining.git main',
-			'git pull origin main --force',
+			'git pull https://github.com/SteamlabsCA/AiTraining.git main --force',
 			// 'npm install',
 			// your build commands here
 			'refresh',
