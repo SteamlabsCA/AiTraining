@@ -72,7 +72,7 @@ async function chooseModel(URL) {
 
 // Serial Submit to  Microbit
 function serialSubmit(classPrediction) {
-	addLog(`AI predicted ${classPrediction}`, 1);
+	addLog(`AI predicted ${classPrediction}`);
 	writeToSerial(classPrediction);
 }
 
@@ -94,14 +94,14 @@ $('#label-container').on('click', '.toggle-switch', function (event) {
 	let id = $(this).parents()[2].id;
 	for (let i = 0; i < heldClasses.length; i++) {
 		if (heldClasses[i] === id) {
+			addLog(`${id} removed stop and hold`);
 			heldClasses.splice(i, 1);
 			continous = true;
 			return;
 		}
 	}
 
-	//test
-	console.log(`${id}: added`);
+	addLog(`${id} assigned stop and hold`);
 	heldClasses.push(id);
 });
 
