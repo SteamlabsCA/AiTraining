@@ -379,7 +379,7 @@ button:not(#alert-ok):not(.glitchButtonElement):active:not(.glitchButtonElement)
   display: none;
   width: 100%;
   margin: 10px 0;
-  padding: 0 31px;
+  padding: 0 30px;
 }
 
 #page-2 div:first-child #connectPort #cam-select p,
