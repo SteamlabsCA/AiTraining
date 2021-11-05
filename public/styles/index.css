@@ -374,28 +374,40 @@ button:not(#alert-ok):not(.glitchButtonElement):active:not(.glitchButtonElement)
   text-align: center;
 }
 
-#page-2 div:first-child #connectPort #cam-select {
+#page-2 div:first-child #connectPort #cam-select,
+#page-2 div:first-child #connectPort #aud-select {
   display: none;
   width: 100%;
   margin: 10px 0;
 }
 
-#page-2 div:first-child #connectPort #cam-select p {
+#page-2 div:first-child #connectPort #cam-select p,
+#page-2 div:first-child #connectPort #aud-select p {
   font-size: 1.3rem;
   text-align: left;
   margin: 0;
 }
 
-#page-2 div:first-child #connectPort #cam-select select {
-  width: 150px;
+#page-2 div:first-child #connectPort #cam-select select,
+#page-2 div:first-child #connectPort #aud-select select {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 250px;
   font-size: 1rem;
   border: 2px solid #faaf3f;
   border-radius: 5px;
   padding: 7px;
 }
 
-#page-2 div:first-child #connectPort #cam-select select:before {
+#page-2 div:first-child #connectPort #cam-select select:before,
+#page-2 div:first-child #connectPort #aud-select select:before {
   padding: 5px;
+}
+
+#page-2 div:first-child #connectPort #cam-select .choose-label,
+#page-2 div:first-child #connectPort #aud-select .choose-label {
+  padding: 0 10px 0 0;
 }
 
 #page-2 div:first-child #connectPort .input-container {
@@ -466,6 +478,11 @@ button:not(#alert-ok):not(.glitchButtonElement):active:not(.glitchButtonElement)
 #page-3 #audio-container {
   display: none;
   text-align: center;
+}
+
+#page-3 #audio-container canvas {
+  width: 555px;
+  height: 100%;
 }
 
 #page-3 #audio-container .fas {
@@ -651,9 +668,6 @@ button:not(#alert-ok):not(.glitchButtonElement):active:not(.glitchButtonElement)
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-#page-3 .page-container .display .help-dropdown .help-content span:not(.toggle-container) input {
   cursor: default;
 }
 

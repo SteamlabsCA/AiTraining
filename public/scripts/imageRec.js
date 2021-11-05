@@ -15,10 +15,14 @@ async function initImg() {
 	// Convenience function to setup a webcam
 	const flip = true; // whether to flip the webcam
 	webcam = new tmImage.Webcam(500, 500, flip); // width, height, flip
+	let camId = -1;
 
 	let selectedCam = $('#cam').find(':selected').text();
-	if (selectedCam === 'back') {
-		await webcam.setup({ facingMode: 'environment' }); // request access to the webcam
+	for (let i = 0; i < videoDevices.length; i++) {
+		if (videoDevices[i].label === selectedCam) camId = videoDevices[i].deviceId;
+	}
+	if (camId !== -1) {
+		await webcam.setup({ deviceId: camId }); // request access to the webcam
 	} else {
 		await webcam.setup(); // request access to the webcam
 	}
@@ -53,7 +57,7 @@ async function initImg() {
 }
 
 async function imgLoop() {
-	if (!open) addLog('Microbit Connection Closed', 2);
+	if (!open) addLog('Microbit Connection Closed');
 	if (continous) {
 		if (!continous && heldClasses.length > 0) continous = false;
 

@@ -308,7 +308,8 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 				text-align: center;
 			}
 
-			#cam-select {
+			#cam-select,
+			#aud-select {
 				display: none;
 				width: 100%;
 				margin: 10px 0;
@@ -320,7 +321,8 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 				}
 
 				select {
-					width: 150px;
+					width: fit-content;
+					max-width: 250px;
 					font-size: 1rem;
 					border: 2px solid #faaf3f;
 					border-radius: 5px;
@@ -329,6 +331,10 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 					&:before {
 						padding: 5px;
 					}
+				}
+
+				.choose-label {
+					padding: 0 10px 0 0;
 				}
 			}
 
@@ -387,6 +393,11 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 	#audio-container {
 		display: none;
 		text-align: center;
+
+		canvas {
+			width: 555px;
+			height: 100%;
+		}
 
 		.fas {
 			margin: 25%;
@@ -526,10 +537,7 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 						display: flex;
 						align-items: center;
 						justify-content: center;
-
-						input {
-							cursor: default;
-						}
+						cursor: default;
 					}
 				}
 			}
