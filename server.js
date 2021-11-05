@@ -34,7 +34,7 @@ app.post('/git', (req, res) => {
 		for (const cmd of commands) {
 			console.log(execSync(cmd).toString());
 		}
-		console.log('updated with origin/main!');
+		console.log('Updated with SteamlabsCA/AiTraining');
 		return;
 	} else {
 		console.log('webhook signature incorrect!');
