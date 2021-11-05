@@ -27,8 +27,8 @@ app.post('/git', (req, res) => {
 		res.sendStatus(200);
 		const commands = [
 			'git fetch https://github.com/SteamlabsCA/AiTraining.git main',
-			'git reset --hard SteamlabsCA/AiTraining/main',
-			'git pull SteamlabsCA/AiTraining main --force',
+			'git reset --hard origin main',
+			'git pull origin main --force',
 			// 'npm install',
 			// your build commands here
 			'refresh',
