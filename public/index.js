@@ -113,6 +113,7 @@ $('#message-log').click(() => {
 	$('.log-content').slideToggle();
 });
 
+// Custom Alert Function
 function alertUser(msg) {
 	$('#alert-text').text(msg);
 	$('#alert-div').fadeIn(() => {
