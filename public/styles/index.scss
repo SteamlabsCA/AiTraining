@@ -175,7 +175,7 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 
 		&::after {
 			border-width: 13px;
-			left: 50%;
+			left: 55%;
 			border-color: transparent transparent #000 transparent;
 		}
 
@@ -610,7 +610,7 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 										opacity: 0;
 										padding: random(20) / 4 + 2 + px !important;
 										animation: spew 1s 0.3s forwards, rotate 4s + random(4) / 10 0.25s + random(12) / 10 linear infinite, final 0.2s 4s forwards,
-											spot-#{$i} 0.7s 0.4/random (10) + random(10) / 10 + 10s linear infinite !important;
+											spot-#{$i} 0.7s 0.4 / random (10) + random(10) / 10 + 10s linear infinite !important;
 									}
 								}
 							}
@@ -717,6 +717,7 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 								.ui-slider-handle {
 									width: 2em;
 									left: -0.6em;
+									height: 100%;
 									text-decoration: none;
 									text-align: center;
 									width: fit-content;
@@ -809,7 +810,7 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 					background-color: #fff;
 					min-width: 160px;
 					z-index: 1;
-					width: 485px;
+					width: 99%;
 					left: 0;
 					top: 68px;
 					max-height: 200px;
