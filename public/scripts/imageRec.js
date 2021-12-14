@@ -66,6 +66,8 @@ async function imgLoop() {
 			if (foundPrediction.className !== lastDetection) {
 				for (let i = 0; i < imgArr.length; ++i) imgArr[i] = 0;
 				lastDetection = foundPrediction.className;
+				$('.check-img').css('visibility', 'hidden');
+				$(`#check-${foundPrediction.foundI}`).css('visibility', 'visible');
 				serialSubmit(foundPrediction.className);
 			} else {
 				imgArr[foundPrediction.foundI] = 0;

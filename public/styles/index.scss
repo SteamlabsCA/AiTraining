@@ -117,6 +117,12 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 	display: none !important;
 }
 
+.settings-hidden {
+	display: none;
+	text-align: center;
+	margin: 10px 5px;
+}
+
 .sub-title {
 	font-weight: 800;
 	margin: auto;
@@ -510,14 +516,13 @@ button:not(#alert-ok):not(.glitchButtonElement) {
 		transform: rotate(90deg);
 	}
 	.webcam-container {
-		width: 65vw;
-		display: flex;
+		text-align: center;
 
 		canvas {
 			border: 4px solid #000;
 			border-radius: $bordRad;
-			width: 36vw;
-			margin: auto;
+			width: 555px;
+			height: 100%;
 		}
 	}
 
