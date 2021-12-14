@@ -67,6 +67,8 @@ async function poseLoop(timestamp) {
 			if (foundPrediction.className !== lastDetection) {
 				for (let i = 0; i < poseArr.length; ++i) poseArr[i] = 0;
 				lastDetection = foundPrediction.className;
+				$$('.check-img').css('visibility', 'hidden');
+				$(`#check-${foundPrediction.foundI}`).css('visibility', 'visible');
 				serialSubmit(foundPrediction.className);
 			} else {
 				poseArr[foundPrediction.foundI] = 0;

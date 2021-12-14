@@ -154,10 +154,11 @@ function toggleSettings(el) {
 		$('#results-heading').fadeOut(function () {
 			$(this).text('RESULTS!').fadeIn();
 		});
-		$('.popuptext').fadeOut();
+		$('.popuptext, .settings-hidden').fadeOut();
 	} else {
 		$('#results-heading').fadeOut(function () {
 			$(this).text('SETTINGS!').fadeIn();
+			$('.settings-hidden').fadeIn();
 		});
 	}
 }
